@@ -40,13 +40,15 @@ _thing2.default.find({}).remove().then(function () {
 _user2.default.find({}).remove().then(function () {
   _user2.default.create({
     provider: 'local',
-    name: 'Test User',
+    firstName: 'Test',
+    lastName: 'User',
     email: 'test@example.com',
     password: 'test'
   }, {
     provider: 'local',
     role: 'admin',
-    name: 'Admin',
+    firstname: 'Admin',
+    lastname: 'admin',
     email: 'admin@example.com',
     password: 'admin'
   }).then(function () {
