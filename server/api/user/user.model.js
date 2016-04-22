@@ -18,7 +18,8 @@ _mongoose2.default.Promise = require('bluebird');
 
 
 var UserSchema = new _mongoose.Schema({
-  name: String,
+  firstname: String,
+  lastname: String,
   email: {
     type: String,
     lowercase: true
@@ -27,7 +28,10 @@ var UserSchema = new _mongoose.Schema({
     type: String,
     default: 'user'
   },
-  password: String,
+  password: {
+    type: String,
+    minlength: 6
+  },
   provider: String,
   salt: String
 });

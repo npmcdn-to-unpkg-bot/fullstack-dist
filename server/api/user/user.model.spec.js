@@ -14,7 +14,8 @@ var user;
 var genUser = function genUser() {
   user = new _user2.default({
     provider: 'local',
-    name: 'Fake User',
+    firstname: 'Fake User',
+    lastname: 'last',
     email: 'test@example.com',
     password: 'password'
   });
