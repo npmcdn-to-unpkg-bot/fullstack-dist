@@ -13,6 +13,10 @@ var _user = require('../api/user/user.model');
 
 var _user2 = _interopRequireDefault(_user);
 
+var _product = require('../api/product/product.model');
+
+var _product2 = _interopRequireDefault(_product);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _thing2.default.find({}).remove().then(function () {
@@ -43,14 +47,14 @@ _user2.default.find({}).remove().then(function () {
     firstName: 'Test',
     lastName: 'User',
     email: 'test@example.com',
-    password: 'test'
+    password: '123456'
   }, {
     provider: 'local',
     role: 'admin',
     firstname: 'Admin',
     lastname: 'admin',
     email: 'admin@example.com',
-    password: 'admin'
+    password: '123456'
   }).then(function () {
     console.log('finished populating users');
   });

@@ -19,13 +19,17 @@
     <!-- Google Open Sans -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-      <!-- Font awesome -->
-    <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet"> 
-
-    <link rel="stylesheet" href="styles/vendor.d41d8cd9.css">
-
-    <link rel="stylesheet" href="styles/style.d41d8cd9.css">
-
+    <link rel="stylesheet" href="app/vendor.6c63561c.css">
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link href="styles/animate.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+      <!-- injector:css -->
+      <link rel="stylesheet" href="app/admin/admin.css">
+      <link rel="stylesheet" href="app/app.cabf2068.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="components/footer/footer.css">
+      <!-- endinjector -->
+    <!-- endbuild -->
 
 
 </head>
@@ -44,10 +48,38 @@
 </div>
 <!-- End wrapper-->
 
+    <script src="app/vendor.0ec075ce.js"></script>
 
-<script src="scripts/vendor.d41d8cd9.js"></script>
-
-<script src="scripts/scripts.e9c06f5c.js"></script>
+ <!-- build:js(.tmp) app/app.js -->
+ <script src="app/app.4abdac52.js"></script>
+  <!-- injector:js -->
+  <script src="app/admin/admin.module.js"></script>
+  <script src="components/auth/auth.module.js"></script>
+  <script src="components/util/util.module.js"></script>
+  <script src="app/product/product.controller.js"></script>
+  <script src="app/admin/admin.controller.js"></script>
+  <script src="app/account/login/login.controller.js"></script>
+  <script src="app/admin/admin.router.js"></script>
+  <script src="app/app.constant.js"></script>
+  <script src="app/directives.js"></script>
+  <script src="app/inspinia.js"></script>
+  <script src="app/main/main.controller.js"></script>
+  <script src="app/main/main.js"></script>
+  <script src="app/account/profile/profile.controller.js"></script>
+  <script src="app/account/settings/settings.controller.js"></script>
+  <script src="components/auth/auth.service.js"></script>
+  <script src="components/auth/interceptor.service.js"></script>
+  <script src="components/auth/router.decorator.js"></script>
+  <script src="components/auth/user.service.js"></script>
+  <script src="components/footer/footer.directive.js"></script>
+  <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+  <script src="components/navbar/navbar.controller.js"></script>
+  <script src="components/navbar/navbar.directive.js"></script>
+  <script src="components/socket/socket.service.js"></script>
+  <script src="app/account/signup/signup.controller.js"></script>
+  <script src="components/util/util.service.js"></script>
+  <!-- endinjector -->
+<!-- endbuild -->
 
 </body>
 </html>
