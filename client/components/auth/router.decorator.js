@@ -1,28 +1,27 @@
 'use strict';
 
-(function() {
+(function () {
 
-angular.module('meanonlineshopApp.auth')
-  .run(function($rootScope, $state, Auth) {
+  angular.module('meanonlineshopApp.auth').run(function ($rootScope, $state, Auth) {
     // Redirect to login if route requires auth and the user is not logged in, or doesn't have required role
-    $rootScope.$on('$stateChangeStart', function(event, next) {
+    $rootScope.$on('$stateChangeStart', function (event, next) {
       if (!next.authenticate) {
         return;
       }
 
       if (typeof next.authenticate === 'string') {
-        Auth.hasRole(next.authenticate, _.noop).then(has => {
+        Auth.hasRole(next.authenticate, _.noop).then(function (has) {
           if (has) {
             return;
           }
 
           event.preventDefault();
-          return Auth.isLoggedIn(_.noop).then(is => {
+          return Auth.isLoggedIn(_.noop).then(function (is) {
             $state.go(is ? 'login' : 'login');
           });
         });
       } else {
-        Auth.isLoggedIn(_.noop).then(is => {
+        Auth.isLoggedIn(_.noop).then(function (is) {
           if (is) {
             return;
           }
@@ -33,5 +32,5 @@ angular.module('meanonlineshopApp.auth')
       }
     });
   });
-
 })();
+//# sourceMappingURL=router.decorator.js.map

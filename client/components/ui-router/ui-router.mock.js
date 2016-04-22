@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('stateMock', []);
-angular.module('stateMock').service('$state', function($q) {
+angular.module('stateMock').service('$state', function ($q) {
     this.expectedTransitions = [];
 
-    this.transitionTo = function(stateName) {
+    this.transitionTo = function (stateName) {
         if (this.expectedTransitions.length > 0) {
             var expectedState = this.expectedTransitions.shift();
             if (expectedState !== stateName) {
@@ -22,13 +22,14 @@ angular.module('stateMock').service('$state', function($q) {
 
     this.go = this.transitionTo;
 
-    this.expectTransitionTo = function(stateName) {
+    this.expectTransitionTo = function (stateName) {
         this.expectedTransitions.push(stateName);
     };
 
-    this.ensureAllTransitionsHappened = function() {
+    this.ensureAllTransitionsHappened = function () {
         if (this.expectedTransitions.length > 0) {
             throw Error('Not all transitions happened!');
         }
     };
 });
+//# sourceMappingURL=ui-router.mock.js.map

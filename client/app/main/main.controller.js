@@ -1,43 +1,55 @@
 'use strict';
 
-(function() {
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-class MainController {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  constructor($http, $scope, socket) {
-    this.$http = $http;
-    this.socket = socket;
-    this.awesomeThings = [];
+(function () {
+  var MainController = function () {
+    function MainController($http, $scope, socket) {
+      _classCallCheck(this, MainController);
 
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
-    });
-  }
+      this.$http = $http;
+      this.socket = socket;
+      this.awesomeThings = [];
 
-  $onInit() {
-    this.$http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      this.socket.syncUpdates('thing', this.awesomeThings);
-    });
-  }
-
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
-       console.log('masuk');
+      $scope.$on('$destroy', function () {
+        socket.unsyncUpdates('thing');
+      });
     }
-  }
 
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
-}
+    _createClass(MainController, [{
+      key: '$onInit',
+      value: function $onInit() {
+        var _this = this;
 
-angular.module('meanonlineshopApp')
-  .component('main', {
+        this.$http.get('/api/things').then(function (response) {
+          _this.awesomeThings = response.data;
+          _this.socket.syncUpdates('thing', _this.awesomeThings);
+        });
+      }
+    }, {
+      key: 'addThing',
+      value: function addThing() {
+        if (this.newThing) {
+          this.$http.post('/api/things', { name: this.newThing });
+          this.newThing = '';
+          console.log('masuk');
+        }
+      }
+    }, {
+      key: 'deleteThing',
+      value: function deleteThing(thing) {
+        this.$http.delete('/api/things/' + thing._id);
+      }
+    }]);
+
+    return MainController;
+  }();
+
+  angular.module('meanonlineshopApp').component('main', {
     templateUrl: 'app/main/main.html',
     controller: MainController
   });
-
 })();
+//# sourceMappingURL=main.controller.js.map

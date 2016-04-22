@@ -1,1 +1,4 @@
-product.js
+"use strict";
+
+product.js;
+//# sourceMappingURL=product.js.map

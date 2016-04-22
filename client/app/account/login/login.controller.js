@@ -1,7 +1,13 @@
 'use strict';
 
-class LoginController {
-  constructor(Auth, $state) {
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var LoginController = function () {
+  function LoginController(Auth, $state) {
+    _classCallCheck(this, LoginController);
+
     this.user = {};
     this.errors = {};
     this.submitted = false;
@@ -10,24 +16,29 @@ class LoginController {
     this.$state = $state;
   }
 
-  login(form) {
-    this.submitted = true;
+  _createClass(LoginController, [{
+    key: 'login',
+    value: function login(form) {
+      var _this = this;
 
-    if (form.$valid) {
-      this.Auth.login({
-        email: this.user.email,
-        password: this.user.password
-      })
-      .then(() => {
-        // Logged in, redirect to home
-        this.$state.go('index.main');
-      })
-      .catch(err => {
-        this.errors.other = err.message;
-      });
+      this.submitted = true;
+
+      if (form.$valid) {
+        this.Auth.login({
+          email: this.user.email,
+          password: this.user.password
+        }).then(function () {
+          // Logged in, redirect to home
+          _this.$state.go('index.main');
+        }).catch(function (err) {
+          _this.errors.other = err.message;
+        });
+      }
     }
-  }
-}
+  }]);
 
-angular.module('meanonlineshopApp')
-  .controller('LoginController', LoginController);
+  return LoginController;
+}();
+
+angular.module('meanonlineshopApp').controller('LoginController', LoginController);
+//# sourceMappingURL=login.controller.js.map

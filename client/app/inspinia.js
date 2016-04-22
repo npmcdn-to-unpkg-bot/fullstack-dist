@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * INSPINIA - Responsive Admin Theme
  * 2.5
@@ -7,7 +9,6 @@
 
 $(document).ready(function () {
 
-
     // Full height of sidebar
     function fix_height() {
         var heightWithoutNavbar = $("body > #wrapper").height() - 61;
@@ -16,12 +17,12 @@ $(document).ready(function () {
         var navbarHeigh = $('nav.navbar-default').height();
         var wrapperHeigh = $('#page-wrapper').height();
 
-        if(navbarHeigh > wrapperHeigh){
+        if (navbarHeigh > wrapperHeigh) {
             $('#page-wrapper').css("min-height", navbarHeigh + "px");
         }
 
-        if(navbarHeigh < wrapperHeigh){
-            $('#page-wrapper').css("min-height", $(window).height()  + "px");
+        if (navbarHeigh < wrapperHeigh) {
+            $('#page-wrapper').css("min-height", $(window).height() + "px");
         }
 
         if ($('body').hasClass('fixed-nav')) {
@@ -31,37 +32,36 @@ $(document).ready(function () {
                 $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
             }
         }
-
     }
 
-    $(window).bind("load resize scroll", function() {
-        if(!$("body").hasClass('body-small')) {
+    $(window).bind("load resize scroll", function () {
+        if (!$("body").hasClass('body-small')) {
             fix_height();
         }
     });
 
     // Move right sidebar top after scroll
-    $(window).scroll(function(){
-        if ($(window).scrollTop() > 0 && !$('body').hasClass('fixed-nav') ) {
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 0 && !$('body').hasClass('fixed-nav')) {
             $('#right-sidebar').addClass('sidebar-top');
         } else {
             $('#right-sidebar').removeClass('sidebar-top');
         }
     });
 
-    setTimeout(function(){
+    setTimeout(function () {
         fix_height();
     });
-
 });
 
 // Minimalize menu when screen is less than 768px
-$(function() {
-    $(window).bind("load resize", function() {
+$(function () {
+    $(window).bind("load resize", function () {
         if ($(document).width() < 769) {
-            $('body').addClass('body-small')
+            $('body').addClass('body-small');
         } else {
-            $('body').removeClass('body-small')
+            $('body').removeClass('body-small');
         }
-    })
+    });
 });
+//# sourceMappingURL=inspinia.js.map
