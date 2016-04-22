@@ -6,29 +6,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (function () {
   var MainController = function () {
-    function MainController($http, $scope, socket) {
+    function MainController($http, $scope) {
       _classCallCheck(this, MainController);
 
       this.$http = $http;
-      this.socket = socket;
       this.awesomeThings = [];
-
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('thing');
-      });
     }
 
     _createClass(MainController, [{
-      key: '$onInit',
-      value: function $onInit() {
-        var _this = this;
-
-        this.$http.get('/api/things').then(function (response) {
-          _this.awesomeThings = response.data;
-          _this.socket.syncUpdates('thing', _this.awesomeThings);
-        });
-      }
-    }, {
       key: 'addThing',
       value: function addThing() {
         if (this.newThing) {
