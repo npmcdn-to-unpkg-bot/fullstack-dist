@@ -1,16 +1,13 @@
 'use strict';
 
+//import mongoose from 'mongoose';
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
-var _mongoose = require('mongoose');
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ProductSchema = new _mongoose2.default.Schema({
+var ProductSchema = new mongoose.Schema({
   Title: String,
   Author: String,
   Description: String,
@@ -18,8 +15,9 @@ var ProductSchema = new _mongoose2.default.Schema({
   Image: String,
   Price: Number,
   Stock: Number,
-  Status: String
+  Status: String,
+  imageUrl: String
 });
 
-exports.default = _mongoose2.default.model('Product', ProductSchema);
+exports.default = mongoose.model('Product', ProductSchema);
 //# sourceMappingURL=product.model.js.map

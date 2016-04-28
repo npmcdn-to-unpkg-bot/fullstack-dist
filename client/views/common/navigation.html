@@ -35,7 +35,7 @@
             <li ui-sref-active="active">
                 <a ui-sref="index.main"><i class="fa fa-laptop"></i> <span class="nav-label">Main page</span> </a>
             </li>
-            <li ui-sref-active="active">
+            <li ui-sref-active="active" ng-show="nav.isAdmin()" >
                 <a ui-sref="index.minor"><i class="fa fa-desktop"></i> <span class="nav-label">Admin page</span><span class="fa arrow"></span></a>
                  <ul class="nav nav-second-level collapse">
                      <li>
@@ -48,7 +48,7 @@
                                 <a href="">Edit User</a>
                             </li>
                             <li>
-                                <a href="">User list</a>
+                                <a ui-sref="admin.user_list">User list</a>
                             </li>
                         </ul>
                     </li>
@@ -62,13 +62,13 @@
                                 <a href="">Category List</a>
                             </li>
                             <li>
-                                <a href="">Create Products</a>
+                                <a ui-sref="admin.create_product">Create Products</a>
                             </li>
                             <li>
-                                <a href="">Edit Products</a>
+                                <a ui-sref="admin.edit_product">Edit Products</a>
                             </li>
                               <li>
-                                <a href="">Products List</a>
+                                <a ui-sref="admin.list_product">Products List</a>
                             </li>
                         </ul>
                     </li>
@@ -88,9 +88,7 @@
              <li ui-sref-active="active" ng-show="nav.isLoggedIn()">
                 <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">E-Commerce</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('commerce')}">
-                    <li ui-sref-active="active"><a ui-sref="commerce.products_grid">Products grid</a></li>
                     <li ui-sref-active="active"><a ui-sref="commerce.product_list">Products list</a></li>
-                    <li ui-sref-active="active"><a ui-sref="commerce.product_details">Product detail</a></li>
                     <li ui-sref-active="active"><a ui-sref="commerce.cart">Cart</a></li>
                     <li ui-sref-active="active"><a ui-sref="commerce.orders">Orders</a></li>
                     <li ui-sref-active="active"><a ui-sref="commerce.payments">Credit Card form</a></li>

@@ -18,7 +18,12 @@
     </div>
 </div>
 
+<div>
+    <button type="submit" ng-click="ec.DialogDemoCtrl()">tesdialog</button>
+                </div>
+</div>
 <form class="thing-form" name="form" ng-submit="ec.addProduct(form)">
+
    <!-- <label>Syncs in realtime across clients</label>
     <p class="input-group">
       <input type="text" class="form-control" name="title" placeholder="Add a new product here." ng-model="ec.newProduct.title">
@@ -52,14 +57,9 @@
                       <input type="text" id="Category" name="Category" value="" placeholder="Category" class="form-control" ng-model="ec.newProduct.category">
                 </div>
             </div>
-             <div >
-                <div class="form-group">
-                    <label class="control-label" for="Image">Image</label>
-                      <input type="text" id="Image" name="Image" value="" placeholder="Image" class="form-control" ng-model="ec.newProduct.image">
-                      
-                </div>
-            </div>
-             <div >
+             
+
+              <div >
                 <div class="form-group">
                     <label class="control-label" for="Price">Price</label>
                       <input type="text" id="Price" name="Price" value="" placeholder="Price" class="form-control" ng-model="ec.newProduct.price">
@@ -84,6 +84,21 @@
     </div>
   </form>
   
+  <div >
+                <div class="form-group">
+                    <label class="control-label" for="Image">Image</label>
+                    
+                             <img ng-show="image" ng-src="{{image.resized.dataURL}}" type="{{image.file.type}}" > </img>
+                             </td>
+                            
+                     
+                                 <input type="file" class="btn" accept="image/*" image="image" resize-max-height="300" resize-max-width="250" resize-quality="0.7" />
+                                  <input type="text" id="imageurl" value = "{{image.resized.dataURL}}" ng-model="ec.newProduct.image"></input>
+                                  <image></image>
+                         
+                             <button type="submit" ng-click="ec.single(image)">Add</button>
+                </div>
+            </div>
   <div class="ibox-content">
                     <div class="text-center">
                         <button class="btn btn-primary" ng-click="ec.DialogDemoCtrl()">Form in simple modal box</button>

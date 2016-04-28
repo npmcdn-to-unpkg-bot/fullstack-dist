@@ -6,24 +6,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (function () {
   var EcommerceController = function () {
-    function EcommerceController($http, $scope, $state, $uibModal, $timeout) {
+    function EcommerceController($http, $scope, $state) {
       _classCallCheck(this, EcommerceController);
 
       this.newProduct = {};
 
       this.$http = $http;
       this.$state = $state;
-      this.$uibModal = $uibModal;
-      this.$timeout = $timeout;
+      this.$scope = $scope;
     }
 
     _createClass(EcommerceController, [{
       key: 'addProduct',
       value: function addProduct(form) {
+        /*var formData = new FormData();
+                     formData.append('image', this.image);
+                     console.log(this.image);
+                     this.$http.post('/upload', formData, {
+                         headers: { 'Content-Type': false },
+                         transformRequest: angular.identity
+                     }).success(function(result) {
+                         $scope.uploadedImgSrc = result.src;
+                         $scope.sizeInBytes = result.size;
+                     });*/
 
+        // this.$http.post('/upload', {});
         // if (this.newProduct) {
-        console.log(this.newProduct.title);
-        console.log(form);
+        //console.log(imageupload);
         this.$http.post('/api/products', {
           Title: this.newProduct.title,
           Author: this.newProduct.author,
@@ -33,6 +42,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           Price: this.newProduct.price,
           Stock: this.newProduct.stock,
           Status: this.newProduct.status
+        }).success(function (result) {
+          console.log(result);
         });
         this.newProduct = {};
         // }
@@ -54,6 +65,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $dialog.dialog({}).open('views/common/modal_example.html');
         }, 3000);
       }
+    }, {
+      key: 'uploadHander',
+      value: function uploadHander($scope, Upload, $timeout) {
+        return function (file) {
+          if (file && !file.$error) {
+            $scope.file = file;
+            file.upload = Upload.upload({
+              url: '/api/products/' + $scope.product._id + '/upload',
+              file: file
+            });
+
+            file.upload.then(function (response) {
+              $timeout(function () {
+                file.result = response.data;
+              });
+            }, function (response) {
+              if (response.status > 0) {
+                console.log(response.status + ': ' + response.data);
+                errorHandler($scope)(response.status + ': ' + response.data);
+              }
+            });
+
+            file.upload.progress(function (evt) {
+              file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+          }
+        };
+      }
     }]);
 
     return EcommerceController;
@@ -61,4 +100,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   angular.module('meanonlineshopApp').controller('EcommerceController', EcommerceController);
 })();
+
+/*angular.module('meanonlineshopApp')
+.controller('EcommerceController', function ($scope, $state, Product) {
+     single = function(image) {
+                        var formData = new FormData();
+                        formData.append('image', image, image.file.name);
+
+                        this.$http.post('/upload', formData, {
+                            headers: { 'Content-Type':  'application/json' },
+                            transformRequest: angular.identity
+                        }).success(function(data) {
+                            //this.$scope.uploadedImgSrc = result.src;
+                            //this.$scope.sizeInBytes = result.size;
+                             var parsedJson = JSON.parse(data) ;
+                              console.log(parsedJson.name);
+                        })
+                          .error(function(data)
+                         {
+                          console.log(data);
+                         })
+                        ;
+                        Product.upload(image)
+      };
+  });*/
 //# sourceMappingURL=ecommerce.controller.js.map

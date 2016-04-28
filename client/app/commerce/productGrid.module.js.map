@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../client/app/commerce/productGrid.module.js"],"names":[],"mappings":"AAAA;;AAEA,QAAQ,MAAR,CAAe,+BAAf,EAAgD,CAC9C,wBAD8C,EAE9C,WAF8C,CAAhD","file":"productGrid.module.js","sourcesContent":["'use strict';\r\n\r\nangular.module('meanonlineshopApp.productGrid', [\r\n  'meanonlineshopApp.auth',\r\n  'ui.router'\r\n]);\r\n"]}
