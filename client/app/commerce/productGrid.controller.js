@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('meanonlineshopApp.productGrid').controller('ProductGridController', function ($scope, $filter, Product) {
+angular.module('meanonlineshopApp.productGrid').controller('ProductGridController', function ($rootScope, $scope, $filter, Product) {
 
   // Use the Product $resource to fetch all products
   $scope.products = Product.query();
   $scope.currentPage = 0;
   $scope.data = [];
-  $scope.q = '';
+  $rootScope.q = '';
 
   $scope.getData = function () {
     // needed for the pagination calc

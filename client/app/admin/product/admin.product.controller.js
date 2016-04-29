@@ -63,7 +63,7 @@ angular.module('meanonlineshopApp').controller('AdminProductController', functio
         this.$http = $http;
         this.$http.delete('/api/products/' + productId, {}).success(function (result) {
             toastr.success('Product has been deleted successfully');
-            $state.reload();
+            $scope.listProductTable.reload();
         }).catch(function (err) {
             toastr.error(err.data.message, 'There is an error');
         });
@@ -72,6 +72,24 @@ angular.module('meanonlineshopApp').controller('AdminProductController', functio
     $scope.idSelectedVote = null;
     $scope.setSelected = function (idSelectedVote) {
         $scope.idSelectedVote = idSelectedVote;
+    };
+
+    $scope.doCheck = function () {
+        if ($scope.product.Stock > 0) {
+            $scope.product.Status = "Available";
+            //status.value
+        } else {
+                $scope.product.Status = "Unavailable";
+            }
+    };
+
+    $scope.showAll = function () {
+        $scope.data = $scope.products;
+    };
+    $scope.showPaging = function () {
+        if ($scope.searchKeyword.Title == "") {
+            $scope.listProductTable.reload();
+        }
     };
 }).directive('ngConfirmClick', [function () {
     return {
@@ -113,6 +131,15 @@ angular.module('meanonlineshopApp').controller('AdminProductController', functio
                 });
             };
         };
+    };
+
+    $scope.doCheck = function () {
+        if ($scope.product.Stock > 0) {
+            $scope.product.Status = "Available";
+            //status.value
+        } else {
+                $scope.product.Status = "Unavailable";
+            }
     };
 });
 //# sourceMappingURL=admin.product.controller.js.map
